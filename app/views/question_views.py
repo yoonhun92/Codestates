@@ -73,7 +73,7 @@ def create():
 def modify(question_id):
     question = Question.query.get_or_404(question_id)
     if g.user != question.user:
-        flash('수정권한이 없습니다')
+        flash('수정 권한이 없습니다')
         return redirect(url_for('question.detail', question_id=question_id))
     if request.method == 'POST':
         form = QuestionForm()
@@ -91,7 +91,7 @@ def modify(question_id):
 def delete(question_id):
     question = Question.query.get_or_404(question_id)
     if g.user != question.user:
-        flash('삭제권한이 없습니다')
+        flash('삭제 권한이 없습니다')
         return redirect(url_for('question.detail', question_id=question_id))
     db.session.delete(question)
     db.session.commit()
