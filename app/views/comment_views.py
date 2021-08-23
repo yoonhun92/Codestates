@@ -29,7 +29,7 @@ def create_question(question_id):
 def modify_question(comment_id):
     comment = Comment.query.get_or_404(comment_id)
     if g.user != comment.user:
-        flash('수정권한이 없습니다')
+        flash('수정 권한이 없습니다')
         return redirect(url_for('question.detail', question_id=comment.question.id))
     if request.method == 'POST':
         form = CommentForm()
@@ -49,7 +49,7 @@ def delete_question(comment_id):
     comment = Comment.query.get_or_404(comment_id)
     question_id = comment.question.id
     if g.user != comment.user:
-        flash('삭제권한이 없습니다')
+        flash('삭제 권한이 없습니다')
         return redirect(url_for('question.detail', question_id=question_id))
     db.session.delete(comment)
     db.session.commit()
@@ -73,7 +73,7 @@ def create_answer(answer_id):
 def modify_answer(comment_id):
     comment = Comment.query.get_or_404(comment_id)
     if g.user != comment.user:
-        flash('수정권한이 없습니다')
+        flash('수정 권한이 없습니다')
         return redirect(url_for('question.detail', question_id=comment.answer.id))
     if request.method == 'POST':
         form = CommentForm()
@@ -94,7 +94,7 @@ def delete_answer(comment_id):
     comment = Comment.query.get_or_404(comment_id)
     question_id = comment.answer.question.id
     if g.user != comment.user:
-        flash('삭제권한이 없습니다')
+        flash('삭제 권한이 없습니다')
         return redirect(url_for('question.detail', question_id=question_id))
     db.session.delete(comment)
     db.session.commit()
